@@ -3,8 +3,7 @@
 # 🌟 The Ivory Affair 
 _Crafting memories with elegance_
 
-A responsive, multi-step event planning webpage built with **HTML, CSS, and JavaScript**.  
-This project allows users to plan events with a sleek and interactive interface.
+A responsive, multi-step event planning webpage built with **HTML, CSS, and JavaScript**,  this project allows users to plan events with a sleek and interactive interface.
 
 ## ✨ Features
 
