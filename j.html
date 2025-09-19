@@ -1,0 +1,193 @@
+
+<html>
+<head>
+  <link rel="stylesheet" href="style.css">
+  <title>Event Planner</title>
+
+</head>
+<body>
+<header>
+  <div class="snow"></div>
+  <center><img src="loog.png" class="logo"/></center>
+</header>
+<nav class="abc">
+<div class="containerr">
+        <ul>
+          <li><a href="home.html">Home</a></li>
+        </ul>
+</div>
+</nav>
+ <center>
+<p><br></p>
+ <div id="slideshow" class="slideshow-container">
+  <h2 class="chooseT">Our previous works:<br></h2>
+  <img class="slide" src="slide1.jpg" >
+  <img class="slide" src="slide2.jpg">
+  <img class="slide" src="slide3.jpg">
+  <img class="slide" src="slide4.jpg">
+  <img class="slide" src="slide5.jpg">
+<img class="slide" src="slide6.jpg">
+<img class="slide" src="slide7.jpg">
+<img class="slide" src="slide8.jpg">
+<br>
+ <a class="prev" onclick="changeSlide(-1)">❮</a>
+  <a class="next" onclick="changeSlide(1)">❯</a>
+</center>
+</div>
+
+<center><button class="btn" id="startBtn">Plan Your Event</button></center>
+
+<div class="container" id="formContainer">
+
+<!-- Step 1: Choose Event -->
+<div class="step" id="step1">
+  <center> <h2 class="chooseT">Choose Type of Event:<br></h2></center> 
+
+  <div class="image-scroll-container">
+    <button class="scroll-btn left" onclick="scrollGallery(-1)">&#8592;</button>
+
+    <div class="template-gallery" id="templateGallery">
+      <div class="event-option" onclick="selectEvent('Wedding')">
+        <img src="wed.jpg" alt="Wedding" />
+        <p>Wedding</p>
+      </div>
+      <div class="event-option" onclick="selectEvent('Birthday')">
+        <img src="bday.jpg" alt="Birthday" />
+        <p>Birthday</p>
+      </div>
+      <div class="event-option" onclick="selectEvent('Anniversary')">
+        <img src="anniv.jpg" alt="Anniversary" />
+        <p>Anniversary</p>
+      </div>
+      <div class="event-option" onclick="selectEvent('Corporate')">
+        <img src="corp.jpg" alt="Corporate" />
+        <p>Corporate</p>
+      </div>
+      <div class="event-option" onclick="selectEvent('Others')">
+        <img src="oth.jpg" alt="Other" />
+        <p>Others</p>
+      </div>
+    </div>
+
+    <button class="scroll-btn right" onclick="scrollGallery(1)">&#8594;</button>
+  </div>
+
+ <center> <button class="btn" onclick="nextStep()">Next</button></center>
+</div>
+
+<!-- Step 2: Colour Scheme -->
+<div class="step" id="step2">
+  <center><h2 class="chooseT">Choose Your Colour Scheme</h2>
+  <label><input type="radio" name="scheme" value="Solid" onclick="showColorPickers('solid')"> Solid Colour</label>
+  <label><input type="radio" name="scheme" value="Gradient" onclick="showColorPickers('gradient')"> Gradient</label>
+
+  <div id="solidColorPicker" class="form-group hidden">
+    <label>Select Color: <input type="color" id="solidColor"></label>
+  </div>
+
+  <div id="gradientColorPicker" class="form-group hidden">
+    <label>Start Color: <input type="color" id="gradientStart"></label>
+    <label>End Color: <input type="color" id="gradientEnd"></label>
+  </div>
+<button class="btn" onclick="prevStep()">Back</button>&nbsp;&nbsp;&nbsp;&nbsp;
+
+  <button class="btn" onclick="nextStep()">Next</button>
+</center>
+</div>
+
+<!-- Step 3: Destination -->
+<div class="step" id="step3">
+  <center><h2 class="chooseT">Choose Location:<br> </h2>
+  <label><input type="radio" name="location" value="India" onclick="toggleCity(true)"> India</label>
+  <label><input type="radio" name="location" value="International" onclick="toggleCity(false)"> Outside India</label>
+
+  <div id="cityDropdown" class="form-group hidden">
+    <label>Select City in India:
+      <select id="citySelect" onchange="handleCityChange(this.value)">
+        <option value="">--Select--</option>
+        <option value="Udaipur">Udaipur</option>
+        <option value="Jaipur">Jaipur</option>
+        <option value="Delhi">Delhi</option>
+        <option value="Mumbai">Mumbai</option>
+        <option value="Chennai">Chennai</option>
+        <option value="Bangalore">Bangalore</option>
+        <option value="Hyderabad">Hyderabad</option>
+        <option value="Kolkata">Kolkata</option>
+        <option value="Goa">Goa</option>
+        <option value="Other">Other</option>
+      </select>
+    </label>
+  </div>
+
+  <div id="otherCityInput" class="form-group hidden">
+    <label>Please specify: <input type="text" id="cityName"></label>
+  </div>
+<button class="btn" onclick="prevStep()">Back</button>&nbsp;&nbsp;&nbsp;&nbsp;
+
+  <button class="btn" onclick="nextStep()">Next</button>
+</center>
+</div>
+
+
+  <!-- Step 4: Number of Events -->
+  <div class="step" id="step4">
+    <center>
+    <h2>Number of Events</h2>
+    <input type="number" id="numEvents" placeholder="Enter number of events:"><br>
+<button class="btn" onclick="prevStep()">Back</button>&nbsp;&nbsp;&nbsp;&nbsp;
+
+    <button class="btn" onclick="nextStep()">Next</button>
+</center>
+  </div>
+
+  <!-- Step 5: Dates -->
+  <div class="step" id="step5">
+ <center>
+    <h2>Event Dates</h2>
+    <label>From: <input type="date" id="dateFrom"></label>
+    <label>To:&nbsp;&nbsp;&nbsp;&nbsp; <input type="date" id="dateTo"></label>
+<button class="btn" onclick="prevStep()">Back</button>&nbsp;&nbsp;&nbsp;&nbsp;
+
+    <button class="btn" onclick="nextStep()">Next</button>
+ </center>
+  </div>
+
+  <!-- Step 6: Budget -->
+  <div class="step" id="step6">
+<center>
+    <h2>Your Budget</h2>
+    <input type="number" id="budget" placeholder="Enter your budget(in rupees)">
+<br> <button class="btn" onclick="prevStep()">Back</button>&nbsp;&nbsp;&nbsp;&nbsp;
+
+   <button class="btn" onclick="nextStep()">Next</button>
+</center>
+  </div>
+
+  <!-- Step 7: Contact Info -->
+<center>
+  <div class="step" id="step7">
+    <h2>Contact Information</h2>
+    <label>Phone Number: <input type="tel" id="phone"></label>
+    <label>Email ID:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="email" id="email"></label>
+    <button class="btn" onclick="prevStep()">Back</button>&nbsp;&nbsp;&nbsp;&nbsp;
+
+    <button class="submit-btn" onclick="submitForm()">Submit</button>
+
+</div>
+</center>
+  <!-- Final Step: Confirmation -->
+
+  <div class="step" id="step8">
+	<center>
+    		<h2>Thank You!</h2>
+    		<p>Your reference number is: <strong id="refNum"></strong></p>
+    		<p>Our agent will call you shortly.</p>
+	</center>
+  </div>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
